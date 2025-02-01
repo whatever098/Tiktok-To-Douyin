@@ -4,3 +4,6 @@
 *.xlsx
 *.csv
 *.spec
+
+venv/
+__pycache__/
