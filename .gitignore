@@ -4,6 +4,11 @@
 *.xlsx
 *.csv
 *.spec
+*.bak
+*.dat
+*.dir
 
 venv/
 __pycache__/
+Download/
+cache/

@@ -136,9 +136,9 @@ class Downloader:
         self.log.info(_("开始下载作品文件"))
         match type_:
             case "batch":
-                await self.run_batch(data, tiktok, **kwargs)
+                return await self.run_batch(data, tiktok, **kwargs)
             case "detail":
-                await self.run_general(data, tiktok, **kwargs)
+                return await self.run_general(data, tiktok, **kwargs)
             case "music":
                 await self.run_music(data, **kwargs)
             case "live":
@@ -172,11 +172,11 @@ class Downloader:
                 collect_name,
             ),
         )
-        await self.batch_processing(data, root, tiktok=tiktok, )
+        return await self.batch_processing(data, root, tiktok=tiktok, )
 
     async def run_general(self, data: list[dict], tiktok: bool, **kwargs):
         root = self.storage_folder(mode="detail")
-        await self.batch_processing(data, root, tiktok=tiktok, )
+        return await self.batch_processing(data, root, tiktok=tiktok, )
 
     async def run_music(self, data: list[dict], **kwargs, ):
         root = self.root.joinpath("Music")
@@ -281,7 +281,8 @@ class Downloader:
             self.__general_progress_object(),
             **kwargs)
         self.statistics_count(count)
-
+        return name, actual_root
+    
     async def downloader_chart(
             self,
             tasks: list[tuple],

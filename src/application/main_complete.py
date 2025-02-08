@@ -819,8 +819,8 @@ class TikTok:
         detail_data = await self.extractor.run(detail_data, record, tiktok=tiktok, )
         if api:
             return detail_data
-        await self.downloader.run(detail_data, "detail", tiktok=tiktok)
-        return self._get_preview_image(detail_data[0])
+        file_name, file_path = await self.downloader.run(detail_data, "detail", tiktok=tiktok)
+        return self._get_preview_image(detail_data[0]), file_name, file_path
 
     @staticmethod
     def _get_preview_image(data: dict) -> str:
