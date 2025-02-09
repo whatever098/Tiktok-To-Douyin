@@ -25,7 +25,7 @@ async def douyin_login(account_file):
             if 'creator.douyin.com/creator-micro/home' in page.url:
                 logger.info("登录成功!")
                 break
-            if num > 60:  # 设置最大等待时间
+            if num > 600:  # 设置最大等待时间
                 raise Exception("登录超时")
             num += 1
             
