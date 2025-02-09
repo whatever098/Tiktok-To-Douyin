@@ -86,7 +86,7 @@ class DouYinVideo(object):
         browser = await playwright.chromium.launch(headless=False, executable_path=chrome_driver_path)
         context = await browser.new_context(storage_state=self.account_file)
         page = await context.new_page()
-
+*-
         await page.goto(upload_url)
         logger.info(f'正在上传-------{self.title}')
         logger.debug('正在打开主页...')
