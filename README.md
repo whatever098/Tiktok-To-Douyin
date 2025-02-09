@@ -42,4 +42,8 @@ python monitor.py
 
 # 实测
 
-![video](docs/运行.mp4)
+<video src="https://github.com/user-attachments/assets/09b6db2e-5788-43c2-ba82-d79e03e3549b">
+
+
+
+
