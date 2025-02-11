@@ -10,6 +10,7 @@ from src.application.TikTokDownloader import TikTokDownloader
 from src.tools import Browser
 from logging import getLogger
 from uploader.uploader import upload_douyin
+from monitor.tiktok_cookie import get_chrome_cookies
 
 # 配置日志
 logging.basicConfig(
@@ -54,12 +55,16 @@ class TikTokMonitor:
         self.downloader.check_config()
         await self.downloader.check_settings(False)
         
-        if Browser(self.downloader.parameter, self.downloader.cookie).run(
-                True,
-                select="2",
-        ):
-            await self.downloader.check_settings()
+        browser = Browser(self.downloader.parameter, self.downloader.cookie)
+        # if browser.run(
+        #         True,
+        #         select="2",
+        # ):
+        #     await self.downloader.check_settings()
         
+        tiktok_cookie = get_chrome_cookies(['www.tiktok.com', '.tiktok.com'])
+        browser.save_cookie(tiktok_cookie, True, )
+
         # 初始化 API 和下载器
         self.tiktok_api = TikTokAPI(self.downloader)
         logger.info("TikTokAPI 初始化完成")
@@ -91,7 +96,7 @@ class TikTokMonitor:
             except Exception as e:
                 logger.error(traceback.format_exc())
                 # 发生错误后等待一段时间再重试
-                await asyncio.sleep(60)
+                await asyncio.sleep(1)
     
     def up_updated(self, res):
         """
@@ -173,7 +178,7 @@ class TikTokMonitor:
 async def main():
     username = "kasumi.yoda"
     sec_uid = "MS4wLjABAAAAKUQx295x3iK3PH5rNfM7f5gzZHhty4GrbTVZsHCKG4FMIzrhDStqz4bUkiU-gxoA"
-    interval = 600
+    interval = 3
     
     async with TikTokMonitor(username, sec_uid, interval) as monitor:
         try:

@@ -78,11 +78,11 @@ class Browser:
                 self.console.info(_("读取 Cookie 成功！"), )
             else:
                 self.console.warning(_("Cookie 数据为空！"), )
-            self.__save_cookie(cookie, tiktok, )
+            self.save_cookie(cookie, tiktok, )
         else:
             self.console.print(_("未选择浏览器！"))
 
-    def __save_cookie(self, cookie: dict, tiktok: bool):
+    def save_cookie(self, cookie: dict, tiktok: bool):
         self.cookie_object.save_cookie(cookie, self.PLATFORM[tiktok].key)
 
     def get(self, browser: str | int, domains: list[str], ) -> dict[str, str]:

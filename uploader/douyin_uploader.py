@@ -12,7 +12,7 @@ async def douyin_login(account_file):
         context = await browser.new_context()
         page = await context.new_page()
         
-        await page.goto(url="https://creator.douyin.com/", timeout=20000)
+        await page.goto(url="https://creator.douyin.com/", timeout=200000)
         
         img_element = page.locator('div.account-qrcode-QvXsyd div.qrcode-image-QrGzx7 img:first-child')
         await img_element.wait_for()
