@@ -195,8 +195,7 @@ class TikTokDownloader:
             await self.__init_language()
 
     def project_info(self):
-        self.console.print(f"{self.LINE}\n\n\n{self.NAME.center(
-            self.WIDTH)}\n\n\n{self.LINE}\n", style=MASTER)
+        self.console.print(f"{self.LINE}\n\n\n{self.NAME.center(self.WIDTH)}\n\n\n{self.LINE}\n", style=MASTER)
         self.console.print(_("项目地址: {}").format(REPOSITORY), style=MASTER)
         self.console.print(_("项目文档: {}").format(DOCUMENTATION_URL), style=MASTER)
         self.console.print(_("开源许可: {}\n").format(LICENCE), style=MASTER)

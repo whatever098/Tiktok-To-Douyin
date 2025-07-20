@@ -582,7 +582,7 @@ class TikTok:
         self.__display_extracted_information(id_, name, mark, )
         prefix = self._generate_prefix(mode)
         suffix = self._generate_suffix(mode)
-        old_mark = f"{m["MARK"]}_{suffix}" if (
+        old_mark = f"{m['MARK']}_{suffix}" if (
             m := await self.cache.has_cache(id_)
         ) else None
         root, params, logger = self.record.run(self.parameter)

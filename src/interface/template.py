@@ -473,8 +473,6 @@ class APITikTok(API):
     def deal_url_params(self, params: dict, number=8, **kwargs, ) -> str:
         if params:
             params = urlencode(params, quote_via=quote, )
-            params += f"&X-Bogus={self.xb.get_x_bogus(
-                params, number, self.headers.get(
-                    "User-Agent", USERAGENT))}"
+            params += f"&X-Bogus={self.xb.get_x_bogus(params, number, self.headers.get('User-Agent', USERAGENT))}"
             return params
         return ""
